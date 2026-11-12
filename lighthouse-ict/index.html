@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIGHTHOUSE ICT | Buy, Sell & Swap Certified Gadgets</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cloudflare.com" />
+</head>
+<body>
+
+  <!-- Top Escrow & Circular Economy Banner -->
+  <div class="top-bar">
+    <span><i class="fa-solid fa-shield-halved"></i> Double-Sided Escrow Protection • Certified Pre-Owned & New Gadgets • Instant AI Valuation</span>
+  </div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="navbar">
+    <div class="container nav-flex">
+      <a href="#" class="brand">
+        <div class="brand-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+        <div>
+          <strong>LIGHTHOUSE ICT</strong>
+          <small>BUY • SELL • SWAP</small>
+        </div>
+      </a>
+
+      <nav class="mode-tabs">
+        <button class="mode-tab active" data-target="buySection"><i class="fa-solid fa-bag-shopping"></i> Buy Stock</button>
+        <button class="mode-tab" data-target="sellSection"><i class="fa-solid fa-hand-holding-dollar"></i> Sell Device</button>
+        <button class="mode-tab" data-target="swapSection"><i class="fa-solid fa-repeat"></i> Swap Matrix</button>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="wallet-pill" title="Lighthouse Store Credit Balance">
+          <i class="fa-solid fa-wallet"></i>
+          <span>Wallet: <strong id="walletBalance">₦0</strong></span>
+        </div>
+        <button class="cart-trigger" id="openCartBtn">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="pill-tag"><i class="fa-solid fa-microchip"></i> AI-POWERED GADGET EXCHANGE</span>
+        <h1>Upgrade Smarter. Buy, Sell & Swap Certified Tech.</h1>
+        <p>Get instant AI trade-in quotes, swap your current phone with zero risk via Double-Sided Escrow, or shop certified devices.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="switchMode('swapSection')">Launch Swap Matrix</button>
+          <button class="btn-outline" onclick="switchMode('sellSection')">Get Instant Sell Quote</button>
+        </div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="mini-feature">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <div>
+            <h4>AI Cosmetic & Hardware Grader</h4>
+            <p>Instant photo & diagnostic valuation in seconds.</p>
+          </div>
+        </div>
+        <div class="mini-feature">
+          <i class="fa-solid fa-lock"></i>
+          <div>
+            <h4>Double-Sided Escrow</h4>
+            <p>Funds stay locked until Lighthouse Hub QA check passes.</p>
+          </div>
+        </div>
+        <div class="mini-feature">
+          <i class="fa-solid fa-coins"></i>
+          <div>
+            <h4>+5% Wallet Credit Bonus</h4>
+            <p>Convert sold gadgets into instant store credit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Interactive Workspace -->
+  <main class="container workspace">
+
+    <!-- MODULE 1: BUY CERTIFIED STOCK -->
+    <section id="buySection" class="module-panel active">
+      <div class="panel-header">
+        <div>
+          <h2>Certified Gadget Inventory</h2>
+          <p>Every device passes a 40-point Lighthouse ICT hardware inspection.</p>
+        </div>
+        <div class="filter-controls">
+          <input type="text" id="buySearch" placeholder="Search iPhone, MacBook, PS5..." />
+          <select id="catFilter">
+            <option value="all">All Categories</option>
+            <option value="smartphones">Smartphones</option>
+            <option value="laptops">Laptops</option>
+            <option value="consoles">Consoles & Wearables</option>
+          </select>
+          <select id="gradeFilter">
+            <option value="all">All Conditions</option>
+            <option value="Brand New">Brand New</option>
+            <option value="Mint">Mint (Grade A)</option>
+            <option value="Good">Good (Grade B)</option>
+            <option value="Fair">Fair (Grade C)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </section>
+        <!-- MODULE 2: SELL DEVICE (AUTOMATED AI EVALUATION ENGINE) -->
+    <section id="sellSection" class="module-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Sell Your Device — AI Evaluation Engine</h2>
+          <p>Run an AI photo & hardware check to lock in an instant cash or store-credit offer.</p>
+        </div>
+      </div>
+
+      <div class="sell-grid">
+        <div class="card-box">
+          <h3>1. Device Specs & Diagnostics</h3>
+          <div class="form-group">
+            <label>Select Device Model</label>
+            <select id="sellModel">
+              <option value="520000">Apple iPhone 14 Pro Max</option>
+              <option value="380000">Apple iPhone 13 Pro</option>
+              <option value="290000">Apple iPhone 12</option>
+              <option value="450000">Samsung Galaxy S23 Ultra</option>
+              <option value="240000">Samsung Galaxy A54 5G</option>
+              <option value="680000">Apple MacBook Air M1</option>
+              <option value="220000">HP EliteBook 840 G6</option>
+              <option value="420000">Sony PlayStation 5 (PS5)</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Storage Capacity</label>
+              <select id="sellStorage">
+                <option value="1">128GB (Base)</option>
+                <option value="1.1">256GB (+10%)</option>
+                <option value="1.2">512GB / 1TB (+20%)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Battery Health %</label>
+              <input type="number" id="sellBattery" value="90" min="50" max="100" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Screen & Body Condition</label>
+              <select id="sellCosmetic">
+                <option value="Mint">Flawless — Zero Scratches</option>
+                <option value="Good">Minor Light Scratches</option>
+                <option value="Fair">Visible Dents / Cracked Back</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>FaceID / Fingerprint & Camera</label>
+              <select id="sellHardware">
+                <option value="ok">100% Working</option>
+                <option value="issue">Minor Sensor / Camera Issue</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Upload Device Photo for AI Visual Scan (Optional)</label>
+            <input type="file" id="sellPhotoInput" accept="image/*" />
+          </div>
+
+          <button class="btn-primary full-w" id="runAiScanBtn">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Run AI Valuation Scan
+          </button>
+        </div>
+
+        <div class="card-box quote-box">
+          <h3>2. AI Valuation & Instant Payout</h3>
+          <div id="aiScanLoader" class="scan-loader" style="display: none;">
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            <p>AI analyzing hardware diagnostics & market value...</p>
+          </div>
+
+          <div id="sellQuoteResult">
+            <div class="grade-banner" id="detectedGradeBadge">Certified Grade: Mint</div>
+            <p class="ai-note" id="aiReasonText">High battery health and flawless cosmetic condition detected.</p>
+
+            <div class="quote-amounts">
+              <div class="quote-option">
+                <span>Instant Bank Transfer</span>
+                <strong id="cashOfferDisplay">₦0</strong>
+              </div>
+              <div class="quote-option bonus">
+                <span>Lighthouse Wallet (+5% Bonus)</span>
+                <strong id="creditOfferDisplay">₦0</strong>
+              </div>
+            </div>
+
+            <div class="payout-btns">
+              <button class="btn-outline full-w" onclick="acceptSellOffer('cash')">Request Bank Payout</button>
+              <button class="btn-emerald full-w" onclick="acceptSellOffer('credit')">Add +5% Bonus to Wallet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 3: SWAP MATRIX DASHBOARD -->
+    <section id="swapSection" class="module-panel">
+      <div class="panel-header">
+        <div>
+          <h2>Dynamic Swap Matrix & AI Upgrade Matcher</h2>
+          <p>Trade in your current gadget and pay only the net difference under Double-Sided Escrow.</p>
+        </div>
+        <button class="btn-ai" id="aiBestMatchBtn">
+          <i class="fa-solid fa-robot"></i> AI Recommend Best Upgrades
+        </button>
+      </div>
+
+      <div id="aiMatchBanner" class="ai-match-banner" style="display: none;"></div>
+
+      <div class="swap-grid">
+        <div class="card-box">
+          <span class="step-pill">DEVICE YOU GIVE UP</span>
+          <div class="form-group">
+            <label>Your Current Gadget</label>
+            <select id="swapGiveSelect"></select>
+          </div>
+          <div class="form-group">
+            <label>Your Device Condition</label>
+            <select id="swapGiveCondition">
+              <option value="1">Mint (Full Trade-In Value)</option>
+              <option value="0.85">Good (-15% Deduction)</option>
+              <option value="0.65">Fair (-35% Deduction)</option>
+            </select>
+          </div>
+          <div class="trade-credit-box">
+            <span>Estimated Trade-In Credit:</span>
+            <strong id="swapCreditVal">₦0</strong>
+          </div>
+        </div>
+
+        <div class="swap-center-icon">
+          <i class="fa-solid fa-right-left"></i>
+        </div>
+
+        <div class="card-box">
+          <span class="step-pill target">DEVICE YOU RECEIVE</span>
+          <div class="form-group">
+            <label>Target Upgrade Device (In Stock)</label>
+            <select id="swapGetSelect"></select>
+          </div>
+          <div class="trade-credit-box">
+            <span>Target Device Price:</span>
+            <strong id="swapTargetVal">₦0</strong>
+          </div>
+          <label class="wallet-check">
+            <input type="checkbox" id="applyWalletSwap" /> Apply Lighthouse Wallet Credit (<span id="swapWalletAvail">₦0</span>)
+          </label>
+        </div>
+      </div>
+
+      <div class="swap-summary-bar">
+        <div>
+          <span>Net Top-Up Balance to Lock Swap:</span>
+          <h2 id="swapNetBalance">₦0</h2>
+        </div>
+        <button class="btn-primary" id="lockEscrowBtn">
+          <i class="fa-solid fa-lock"></i> Lock Swap in Double-Sided Escrow
+        </button>
+      </div>
+
+      <!-- Double-Sided Escrow Status Tracker -->
+      <div id="escrowTracker" class="escrow-box" style="display: none;">
+        <h3><i class="fa-solid fa-shield-halved"></i> Active Double-Sided Escrow Tracker — <span id="escrowId"></span></h3>
+        <div class="escrow-steps">
+          <div class="e-step done">1. Escrow Funds Locked</div>
+          <div class="e-step active" id="step2">2. Drop-Off / Courier Pickup</div>
+          <div class="e-step" id="step3">3. Lighthouse Hub Physical QA</div>
+          <div class="e-step" id="step4">4. Upgrade Device Released</div>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px;">
+          <button class="btn-outline" id="advanceEscrowBtn">Simulate Next QA Stage &rarr;</button>
+          <a id="whatsappSwapLink" href="#" target="_blank" class="btn-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i> Send Swap Summary to CEO
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <footer class="footer">
+    <div class="container footer-flex">
+      <div>
+        <strong>LIGHTHOUSE-ICT</strong>
+        <p>Certified Circular Gadget Economy • Buy, Sell & Swap with Escrow Protection.</p>
+        <p style="margin-top: 6px; color: #38bdf8;"><strong>CEO & Founder:</strong> MR IYANU OGUNSHAKIN</p>
+      </div>
+      <div>
+        <p>QA Hubs: Ikeja Computer Village • Cocoa house 8th floor</p>
+        <p>© 2026 Lighthouse ICT. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  <div class="drawer" id="cartDrawer">
+    <div class="drawer-head">
+      <h3>Your Cart</h3>
+      <button id="closeCartBtn">&times;</button>
+    </div>
+    <div class="drawer-body" id="cartItems"></div>
+    <div class="drawer-foot">
+      <div class="row-between"><span>Total:</span><strong id="cartTotal">₦0</strong></div>
+      <button class="btn-emerald full-w" onclick="checkoutCart()">Complete Secure Checkout</button>
+    </div>
+  </div>
+  <button class="ai-fab" id="toggleAiChat" title="Ask Lighthouse AI Advisor">
+    <i class="fa-solid fa-robot"></i>
+    <span>AI Advisor</span>
+  </button>
+
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="ai-chat-head">
+      <div>
+        <strong><i class="fa-solid fa-sparkles"></i> Lighthouse AI Advisor</strong>
+        <small>Online • Live Inventory & Swap Math</small>
+      </div>
+      <button id="closeAiChat">&times;</button>
+    </div>
+    <div class="ai-chat-messages" id="aiMessages">
+      <div class="msg bot">
+        Hi! I'm your Lighthouse ICT AI Advisor. Ask me things like:<br />
+        • <em>"Swap iPhone 12"</em><br />
+        • <em>"Laptops under 500k"</em><br />
+        • <em>"How does escrow work?"</em>
+      </div>
+    </div>
+    <form class="ai-chat-input" id="aiChatForm">
+      <input type="text" id="aiPromptInput" placeholder="Ask about swaps, prices, or escrow..." required />
+      <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+      <!-- Customer Login / Create Account Gate -->
+  <div class="auth-gate" id="authGate">
+    <div class="auth-gate-box">
+      <div class="brand-icon" style="margin: 0 auto 12px;"><i class="fa-solid fa-tower-broadcast"></i></div>
+      <h2>Welcome to LIGHTHOUSE ICT</h2>
+      <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 16px;">
+        Sign in or create a free account to access certified gadgets, instant AI quotes, and swap deals.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px;">
+        <button type="button" class="btn-primary" id="gateLoginTab">Sign In</button>
+        <button type="button" class="btn-outline" id="gateSignupTab">Create Account</button>
+      </div>
+
+      <form id="gateAuthForm">
+        <div class="form-group" id="gateNameGroup" style="display: none;">
+          <label>Full Name</label>
+          <input type="text" id="gateName" placeholder="e.g. Tunde Bakare" />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="gateEmail" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="gatePassword" placeholder="Enter password" required />
+        </div>
+        <button type="submit" class="btn-emerald full-w" id="gateSubmitBtn">Access Store &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Interactive WhatsApp Welcome Widget -->
+  <button class="wa-float-btn" id="waFloatBtn" title="Chat with us on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-online-dot"></span>
+  </button>
+
+  <div class="wa-popup" id="waPopup">
+    <div class="wa-popup-head">
+      <div>
+        <strong>LIGHTHOUSE ICT Support</strong>
+        <small>● Online • Typically replies in 2 mins</small>
+      </div>
+      <button id="closeWaPopup">&times;</button>
+    </div>
+    <div class="wa-popup-body">
+      <div class="wa-bubble">
+        👋 Welcome to <strong>LIGHTHOUSE ICT</strong>! Looking to buy, sell, or swap a gadget today? Send us a message below to chat directly on WhatsApp!
+      </div>
+    </div>
+    <form class="wa-popup-form" id="waChatForm">
+      <input type="text" id="waMsgInput" placeholder="Type your message here..." required />
+      <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
+
